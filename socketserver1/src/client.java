@@ -3,16 +3,23 @@ import java.net.*;
 class client {  
 	public static void main(String argv[]) throws Exception 
 	{   
+		
 		String sentence;
 		String modifiedSentence; 
+		
 		BufferedReader inFromUser = new BufferedReader( new InputStreamReader(System.in)); 
-		Socket clientSocket = new Socket("joey-hsu", 65530);   DataOutputStream outToServer = new DataOutputStream(clientSocket.getOutputStream());
+		while(true){   //這放在這可以一直輸入
+		Socket clientSocket = new Socket("joey-hsu", 65533);   DataOutputStream outToServer = new DataOutputStream(clientSocket.getOutputStream());
+//		while(true){   //這放在這就不可以一直輸入
 		BufferedReader inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-		sentence = inFromUser.readLine();   outToServer.writeBytes(sentence + '\n');
+		
+		
+		sentence = inFromUser.readLine(); 
+		outToServer.writeBytes(sentence + '\n');
 		modifiedSentence = inFromServer.readLine(); 
 		System.out.println("FROM SERVER: " + modifiedSentence);  
-		clientSocket.close();
-
+//		clientSocket.close();
+		}
 		} 
 	
 }// - See more at: http://systembash.com/content/a-simple-java-tcp-server-and-tcp-client/#sthash.PvXrustS.dpuf

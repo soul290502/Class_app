@@ -5,7 +5,7 @@ class server {
 	{          
 		String clientSentence;
 		String capitalizedSentence;
-		ServerSocket welcomeSocket = new ServerSocket(65530); 
+		ServerSocket welcomeSocket = new ServerSocket(65533); 
 		while(true)          
 		{             
 			Socket connectionSocket = welcomeSocket.accept();
